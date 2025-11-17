@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SmartHomeController
 {
-    public class SmartDevice
+    public class SmartDevice 
     {
         // Private fields
         private int deviceId;
@@ -33,7 +33,7 @@ namespace SmartHomeController
             set { status = value; }
         }
 
-        public SmartDevice(int deviceID, string deviceName)
+        public SmartDevice(int deviceID, string deviceName, bool status)
         {
             this.DeviceID = deviceID;
             this.DeviceName = deviceName;
@@ -41,6 +41,21 @@ namespace SmartHomeController
 
         }
 
-       
+    public void TurnOn()
+        {
+            status = true;
+            Console.WriteLine($"{deviceName} with {DeviceID} is now on");
+        }
+
+        public void TurnOff()
+        {
+            status = false;
+            Console.WriteLine($"{deviceName} with {DeviceID} is now off");
+        }
+
+        public virtual void GetStatus()
+        {
+            Console.WriteLine($"DeviceID {DeviceID},Name:{DeviceName}, Status (On or Off); {(Status ? "ON" : "OFF")}");
+        }
     }
 }
